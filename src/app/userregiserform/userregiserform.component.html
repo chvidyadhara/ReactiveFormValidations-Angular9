@@ -1,0 +1,113 @@
+<div class="background">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col col-md-6">
+        <form [formGroup]="userform" #myForm="ngForm" (ngSubmit)="submit(myForm)" class="setbortder">
+          <div class="userreg">
+            <h5>User Register Form</h5>
+          </div>
+          UserName*:<input type="text" class="form-control" formControlName="username" deat
+            [ngClass]="{'is-invalid':submitted && userform.controls.username.errors}" />
+          <p *ngIf="submitted && userform.controls.username.errors">
+            <span *ngIf="userform.controls.username.errors.required">
+              user name is required
+            </span>
+          </p>
+
+          Email*:<input type="email" class="form-control" formControlName="email"
+            [ngClass]="{'is-invalid':submitted && userform.controls.email.errors}" />
+          <p *ngIf="submitted && userform.controls.email.errors">
+            <span *ngIf="userform.controls.email.errors.required">
+              email is required
+            </span>
+            <span *ngIf="userform.controls.email.errors.email">
+              email is not valid
+            </span>
+          </p>
+
+          Password*<input type="password" class="form-control" formControlName="password"
+            [ngClass]="{'is-invalid':submitted && userform.controls.password.errors}">
+
+          <p *ngIf="submitted && userform.controls.password.errors">
+            <span *ngIf="userform.controls.password.errors.required">
+              password is required
+            </span>
+          </p>
+          ConformPassword*:<input type="password" class="form-control" formControlName="confirmPassword"
+            [ngClass]="{'is-invalid':submitted && userform.controls.confirmPassword.errors}">
+
+          <p *ngIf="submitted && userform.controls.confirmPassword.errors">
+            <span *ngIf="userform.controls.confirmPassword.errors.required">
+              ConformPassword is required
+            </span>
+            <span *ngIf="userform.controls.confirmPassword.mustMatch"> ConformPassword  must match</span>
+          </p>
+
+          PhoneNumber*:<input type="text" class="form-control" formControlName="phone"
+            [ngClass]="{'is-invalid':submitted && userform.controls.phone.errors}">
+          <p *ngIf="submitted && userform.controls.phone.errors">
+            <span *ngIf="userform.controls.phone.errors.required">
+              PhoneNumber is required
+            </span>
+          </p>
+          
+           <div  include="form-input-select()"> 
+          <label for="exampleFormControlSelect1">select country*</label>
+          <select class="form-control" id="exampleFormControlSelect1" formControlName="country"
+            [ngClass]="{'is-invalid':submitted && userform.controls.country.errors}">
+            <option value="">Selet country</option>
+            <option>India</option>
+            <option>Australia</option>
+            <option>UK</option>
+            <option>England</option>
+            <option>China</option>
+          </select>
+          </div>
+          <p *ngIf="submitted && userform.controls.country.errors">
+            <span *ngIf="userform.controls.country.errors.required">
+              Country is required
+            </span>
+          </p>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" formControlName="gender" value="male" checked
+              [ngClass]="{'is-invalid':submitted && userform.controls.gender.errors}">
+            <label class="form-check-label" for="exampleRadios1">
+              Male
+            </label>
+            <div *ngIf="submitted && userform.controls.gender.errors">
+              <div *ngIf="userform.controls.gender.errors.required">
+              </div>
+            </div>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" formControlName="gender" value="female"
+              [ngClass]="{'is-invalid': submitted && userform.controls.errors}">
+            <label class="form-check-label" for="exampleRadios2">
+              Female
+            </label>
+            <div *ngIf="submitted && userform.controls.gender.errors">
+              <div *ngIf="userform.controls.gender.errors.required">
+                Gender is required
+              </div>
+            </div>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" formControlName="checkboxs"
+              [ngClass]="{'is-invalid': submitted && userform.controls.checkboxs.errors}">
+            <label class="form-check-label" for="defaultCheck1">
+              I am agree with terms and conditions
+            </label>
+            <div *ngIf="submitted && userform.controls.checkboxs.errors">
+              <div *ngIf="userform.controls.checkboxs.errors.required">
+                Agree the terms and conditions
+              </div>
+            </div>
+          </div>
+         <div class="row justify-content-center pt-4">
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
